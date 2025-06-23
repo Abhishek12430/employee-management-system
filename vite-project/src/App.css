@@ -1,0 +1,858 @@
+/* Global Reset and Background */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Only apply center styling when login page is active */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  color: black;
+}
+
+/* LOGIN CSS */
+.login-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+  margin-right: px;
+}
+
+input:focus {
+  border-color: #4d90fe;
+  outline: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4d90fe;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #357ae8;
+}
+
+button:active {
+  background-color: #2d6fb3;
+}
+
+
+/* login responsive */
+@media (max-width: 768px) {
+  .login-page {
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .login-form {
+    width: 100%;
+    padding: 20px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .login-form h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .login-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 15px;
+  }
+
+  .login-form h2 {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .login-button {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+
+
+
+
+
+
+/* HEADER */
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background-color: #121212;
+  color: white;
+   width: 90%;
+  box-sizing: border-box;
+   top: 0;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.header h1 span {
+  display: inline;
+  margin-left: 8px;
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 110px;
+  border: none;
+}
+
+.logout-btn:hover {
+  background-color: rgb(67, 65, 65);
+  color: black;
+  transition: 0.3s;
+}
+.sideNheader{
+  display: flex;
+  flex-direction: row;        /* Horizontal layout */
+  align-items: center;
+  background-color: #121212;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 20px;
+   position: sticky;
+}
+
+.sidebar-icon {
+  width: 10%;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: left;           /* Icon aligned to the left */
+}
+
+
+  .left-header{
+align-items: center;
+display: flex;
+gap :1.5rem;
+    
+  }
+
+
+
+.calender{
+              position: absolute;
+  top: 35px;
+  left: 0;
+  z-index: 100;
+  background: black;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* NOTIFICATION */
+.note{
+   height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+    background: #2f2f45;
+
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.note.open{
+  width:30%;
+}
+
+.contain {
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;              /* Make children align in row */
+  align-items: center;        /* Vertically center items */
+  justify-content: space-between;  /* Space between close button and title */
+  gap: 1rem;                  /* Optional spacing between elements */
+}
+
+
+.closebtn {
+  font-size: 30px;  /* Adjust the size */
+  cursor: pointer;
+  color: white;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .note .closebtn {
+    font-size: 20px;
+  }
+
+  .overlay .closebtn {
+    font-size: 30px;
+    top: 15px;
+    right: 20px;
+  }
+  .header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
+  .left-header { gap: 16px; }
+}
+
+@media screen and (max-width: 768px) {
+  .note.open {
+    width: 100%; /* Take more width on small screens */
+  }
+  .header { padding: 12px; }
+  .logout-btn { padding: 6px 12px; }
+
+}
+
+
+/* --------------------------------- */
+.overlay {
+ position: fixed;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: width 0.3s;
+  z-index: 1000;
+}
+
+/* Add this when sidebar is open */
+.overlay.open {
+  width: 30%; /* Only 30% width */
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+
+  .overlay .closebtn {
+    font-size: 30px;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .overlay.open {
+    width: 100%; /* Take more width on small screens */
+  }
+}
+/* ---------------------------------- */
+ 
+
+
+
+
+/* -------------------------------------------------------111111------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* TaskNumber */
+.parent-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px;
+}
+
+.task-item {
+  min-width: 150px;
+  flex: 1 1 150px;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .parent-container { padding: 24px; gap: 16px; }
+}
+@media (max-width: 480px) {
+  .parent-container { padding: 16px; flex-direction: column; }
+  .task-item { width: 100%; }
+}
+
+
+
+
+/* Tasklist */
+
+html, body {
+  margin: 0; 
+  overflow-x: hidden; /* Enable horizontal scrolling for the inner boxes */
+  overflow-y: auto;
+  height: 100%; 
+}
+
+.Tasklist {
+  width: 100%; /* Make it span the full width of the viewport */
+  height: 350px; /* Adjust the desired fixed height of the red box */
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 40px; /* Keep the top margin */
+  padding: 20px;
+  box-sizing: border-box;
+
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Enable horizontal scrolling for the inner boxes */
+  overflow-y: hidden; /* Prevent vertical scrolling within the red box */
+}
+
+.Tasklist2 {
+  width: 300px;
+  height: 300px; /* Adjust the height of the inner boxes as needed */
+ background: #3b3b55;
+ border-radius: 15px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  flex-shrink: 0;
+  padding: 5px;
+    display: flex;
+  flex-direction: column; 
+}
+.Tasklist2:hover{
+background: linear-gradient(to right, #aeaeae, #6e6e6e);
+
+}
+
+.Tasklist21{
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Tasklist211{
+
+  background-color: rgb(220 38 38); /* Equivalent to bg-red-600 */
+  font-size: 0.875rem; /* Equivalent to text-sm (typically 14px) */
+  line-height: 1.25rem; /* Corresponding line-height for text-sm */
+  padding-left: 0.75rem; /* Equivalent to px-3 */
+  padding-right: 0.75rem; /* Equivalent to px-3 */
+  padding-top: 0.25rem; /* Equivalent to py-1 */
+  padding-bottom: 0.25rem; /* Equivalent to py-1 */
+  border-radius: 0.5rem; /* Equivalent to rounded */
+
+
+}
+.Tasklist22{
+  margin-top: 1.25rem; /* Equivalent to mt-5 */
+  font-size: 1rem; /* Equivalent to text-2xl (typically 24px) */
+  line-height: 2rem; /* Corresponding line-height for text-2xl */
+  font-weight: 600; /* Equivalent to font-semibold */
+  margin-bottom: 0; /* Reset default margin-bottom for h2 */
+}
+
+.Tasklist23{
+   font-size: 0.875rem; /* Equivalent to text-sm (typically 14px) */
+  line-height: 1.25rem; /* Corresponding line-height for text-sm */
+  margin-top: 0.5rem; /* Equivalent to mt-2 */
+  margin-bottom: 1rem; /* Add a default margin-bottom for paragraphs */
+}
+   /* button.task */
+.Tasklist24{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  margin-top: auto;
+}
+.Tasklist24 button {
+  padding: 10px;
+  background: #f9a8d4;
+  border-radius: 8px;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+/* Admindash */
+
+
+.task-form {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 12px;
+  color: #f0f0f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+  
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.task-form > div {
+  flex: 1 1 300px;
+  min-width: 280px;
+}
+
+.form-label {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #eeecec;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+.AllTaskdiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 32px;
+}
+
+.AllTaskdiv2 {
+  background: #2c2c3e;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .AllTaskdiv { padding: 24px; gap: 16px; }
+}
+@media (max-width: 480px) {
+  .AllTaskdiv { padding: 16px; }
+  .AllTaskdiv2 { width: 100%; }
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* Responsive font sizes */
+@media (max-width: 768px) {
+  .form-label {
+    font-size: 14px;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 14px;
+  }
+
+  .form-button {
+    font-size: 0.9rem;
+  }
+
+  .AllTaskdiv2 h2,
+  .AllTaskdiv2 h3 {
+    font-size: 1rem;
+  }
+}
+
+
+/* On very small screens stack form and tasks vertically */
+@media (max-width: 480px) {
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-form > div {
+    min-width: 100%;
+  }
+
+  .AllTaskdiv2 {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+
+/* Responsive styling for login page */
+
+
+/* Registation form */
+/* dont update this right now for register  */
+
+.register-page {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Form Container */
+.register-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(8px);
+  
+}
+.register{
+
+  justify-content:center;
+  padding-right: 10px;
+}
+
+
+/* Heading */
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Form Group */
+.register-group {
+  margin-bottom: 20px;
+}
+
+.register-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.register-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+.register-group input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Button */
+.register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-button:hover {
+  background-color: #357ABD;
+}
+
+/* Link */
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  color: #444;
+}
+
+.register-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .register-form {
+    padding: 20px;
+  }
+
+  .register-form h2 {
+    font-size: 22px;
+  }
+
+  .register-button {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+
+/*Notifiation------------------------------------------------------------------------------------------- */
+
+/* Container holding the whole notification area */
+.notification1 {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+/* The form and its layout */
+.notification {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.notification label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+  color: #111827;
+}
+
+.notification input[type="text"],
+.notification textarea {
+  width: 90%;
+  padding: 2px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.notification textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.notification button {
+  padding: 10px 16px;
+  border: none;
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.notification button:hover {
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+}
+
+/* //--------------------------- */
+.AboutE {
+  position: fixed; /* Changed from 'absolute' to 'fixed' */
+  top: 62%;
+  left: 33%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background-color: rgb(27, 26, 26);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Ensure it's on top of everything */
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
